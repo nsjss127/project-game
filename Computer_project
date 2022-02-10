@@ -1,0 +1,283 @@
+s=input("Enter a number")
+if s=="1":
+    import turtle
+    import random
+    #import pygame
+    from turtle import *
+    #initialize
+    bob=turtle.Turtle()
+    bot_1=turtle.Turtle()
+    bot_2=turtle.Turtle()
+    bot_3=turtle.Turtle()
+    bot_4=turtle.Turtle()
+
+    power=turtle.Turtle()
+    power_2=turtle.Turtle()
+
+    finish=turtle.Turtle()
+
+    color=turtle.Turtle()
+
+    text=turtle.Turtle()
+
+    color.getscreen().bgcolor("#37c2c8")
+
+    start=turtle.Turtle()
+
+    screen=Screen()
+    screen.screensize(1200,1000)
+    style=('courier',30,'italic')
+    text.write("Welcome to turtle game",font=style,align='center')
+
+    finish.penup()
+    finish.setpos(0,300)
+    finish.pendown()
+    finish.forward(300)
+    finish.left(180)
+    finish.forward(600)
+    start.penup()
+    start.setpos(0,-230)
+    start.pendown()
+    start.forward(300)
+    start.left(180)
+    start.forward(600)
+
+    #shape
+    bob.shape("turtle")
+    bot_1.shape("turtle")
+    bot_2.shape("turtle")
+    bot_3.shape("turtle")
+    bot_4.shape("turtle")
+
+    #color
+    bob.color("black")
+    bot_1.color("cyan")
+    bot_2.color("blue")
+    bot_3.color("red")
+    bot_4.color("pink")
+    text.clear()
+    #start position
+
+    bob.penup()
+    bob.setpos(0,-250)
+    bob.left(90)
+    bob.pendown()
+    bot_1.penup()
+    bot_1.setpos(50,-250)
+    bot_1.left(90)
+    bot_1.pendown()
+    bot_2.penup()
+    bot_2.setpos(100,-250)
+    bot_2.left(90)
+    bot_2.pendown()
+    bot_3.penup()
+    bot_3.setpos(-50,-250)
+    bot_3.left(90)
+    bot_3.pendown()
+    bot_4.penup()
+    bot_4.setpos(-100,-250)
+    bot_4.left(90)
+    bot_4.pendown()
+
+    x_pos=random.randrange(-100,250)
+    y_pos=random.randrange(-100,250)
+    x2_pos=random.randrange(-100,250)
+    y2_pos=random.randrange(-100,250)
+
+    power.shape("square")
+    power.penup()
+    power.setpos(x_pos,y_pos)
+    power.pendown()
+    power_2.shape("square")
+    power_2.penup()
+    power_2.setpos(x2_pos,y2_pos)
+    power_2.pendown()
+
+    text.write("Begin race",font=style,align="center")
+    #movement
+    for i in range(100):
+        bot_1.forward(random.randrange(50,100))
+        bot_1.left(random.randrange(5, 20))
+        bot_1.right(random.randrange(5,20))
+        bot_2.forward(random.randrange(50,100))
+        bot_2.left(random.randrange(5,20))
+        bot_2.right(random.randrange(5,20))
+        bot_3.forward(random.randrange(50,100))
+        bot_3.left(random.randrange(5, 20))
+        bot_3.right(random.randrange(5, 20))
+        bot_4.forward(random.randrange(50,100))
+        bot_4.left(random.randrange(5, 20))
+        bot_4.right(random.randrange(5, 20))
+        text.clear()
+
+        def up():
+            bob.forward(random.randrange(10,35))
+
+        def down():
+            bob.backward(random.randrange(10,40))
+
+        def left():
+            bob.left(random.randrange(10,40))
+
+        def right():
+            bob.right(random.randrange(10,40))
+
+        turtle.listen()
+        turtle.onkey(up,"Up")
+        turtle.onkey(down,"Down")
+        turtle.onkey(left,"Left")
+        turtle.onkey(right,"Right")
+
+
+        if (abs(power.xcor()-bob.xcor()<=10) and abs(power.ycor()-bob.ycor()<=10)):
+            bob.forward(100)
+
+        if (abs(power.xcor() - bot_1.xcor() <= 10) and abs(power.ycor() - bot_1.ycor() <= 10)):
+            bot_1.forward(100)
+
+        if (abs(power.xcor() - bot_2.xcor() <= 10) and abs(power.ycor() - bot_2.ycor() <= 10)):
+            bot_2.forward(100)
+
+        if (abs(power.xcor() - bot_3.xcor() <= 10) and abs(power.ycor() - bot_3.ycor() <= 10)):
+            bot_3.forward(100)
+
+        if (abs(power.xcor() - bot_4.xcor() <= 10) and abs(power.ycor() - bot_4.ycor() <= 10)):
+            bot_4.forward(100)
+
+        if (abs(power_2.xcor() - bob.xcor() <= 10) and abs(power_2.ycor() - bob.ycor() <= 10)):
+            bob.goto(0,-250)
+
+        if (abs(power_2.xcor() - bot_1.xcor() <= 10) and abs(power_2.ycor() - bot_1.ycor() <= 10)):
+            bot_1.goto(0,-250)
+
+        if (abs(power_2.xcor() - bot_2.xcor() <= 10) and abs(power_2.ycor() - bot_2.ycor() <= 10)):
+            bot_2.goto(0,-250)
+
+        if (abs(power_2.xcor() - bot_3.xcor() <= 10) and abs(power_2.ycor() - bot_3.ycor() <= 10)):
+            bot_3.goto(0, -250)
+
+        if (abs(power_2.xcor() - bot_4.xcor() <= 10) and abs(power_2.ycor() - bot_4.ycor() <= 10)):
+            bot_4.goto(0,-250)
+
+        if(bob.ycor()>finish.ycor()):
+            bob.write("Winner "+"black",font=style)
+            turtle.done()
+            break
+
+        if (bot_1.ycor()> finish.ycor()):
+            bot_1.write("Winner "+"cyan",font=style)
+            turtle.done()
+            break
+
+        if (bot_2.ycor() >finish.ycor()):
+            bot_2.write("Winner "+"blue",font=style)
+            turtle.done()
+            break
+
+        if (bot_3.ycor() > finish.ycor()):
+            bot_3.write("Winner "+"red",font=style)
+            turtle.done()
+            break
+
+        if (bot_4.ycor()> finish.ycor()):
+            bot_4.write("Winner "+"pink",font=style)
+            turtle.done()
+            break
+
+
+    turtle.mainloop()
+elif s=="2":
+    theBoard = {'7': ' ' , '8': ' ' , '9': ' ' ,
+            '4': ' ' , '5': ' ' , '6': ' ' ,
+            '1': ' ' , '2': ' ' , '3': ' ' }
+
+    board_keys = []
+
+    for key in theBoard:
+        board_keys.append(key)
+
+    def printBoard(board):
+        print(board['7'] + '|' + board['8'] + '|' + board['9'])
+        print('-+-+-')
+        print(board['4'] + '|' + board['5'] + '|' + board['6'])
+        print('-+-+-')
+        print(board['1'] + '|' + board['2'] + '|' + board['3'])
+
+# The main function which has all the gameplay functionality.
+    def game():
+
+        turn = 'X'
+        count = 0
+
+
+        for i in range(15):
+            printBoard(theBoard)
+            print("It's your turn," + turn + ".Move to which place?")
+
+            move = input()        
+
+            if theBoard[move] == ' ':
+                theBoard[move] = turn
+                count += 1
+            else:
+                print("That place is already filled.\nMove to which place?")
+                continue
+
+            #check if player X or O has won,for every move after 5 moves. 
+            if count >= 5:
+                if theBoard['7'] == theBoard['8'] == theBoard['9'] != ' ': # across the top
+                    printBoard(theBoard)
+                    print("\nGame Over.\n")                
+                    print(" **** " +turn + " won. ****")                
+                    break
+                elif theBoard['4'] == theBoard['5'] == theBoard['6'] != ' ': # across the middle
+                    printBoard(theBoard)
+                    print("\nGame Over.\n")                
+                    print(" **** " +turn + " won. ****")
+                    break
+                elif theBoard['1'] == theBoard['2'] == theBoard['3'] != ' ': # across the bottom
+                    printBoard(theBoard)
+                    print("\nGame Over.\n")                
+                    print(" **** " +turn + " won. ****")
+                    break
+                elif theBoard['1'] == theBoard['4'] == theBoard['7'] != ' ': # down the left side
+                    printBoard(theBoard)
+                    print("\nGame Over.\n")                
+                    print(" **** " +turn + " won. ****")
+                    break
+                elif theBoard['2'] == theBoard['5'] == theBoard['8'] != ' ': # down the middle
+                    printBoard(theBoard)
+                    print("\nGame Over.\n")                
+                    print(" **** " +turn + " won. ****")
+                    break
+                elif theBoard['3'] == theBoard['6'] == theBoard['9'] != ' ': # down the right side
+                    printBoard(theBoard)
+                    print("\nGame Over.\n")                
+                    print(" **** " +turn + " won. ****")
+                    break 
+                elif theBoard['7'] == theBoard['5'] == theBoard['3'] != ' ': # diagonal
+                    printBoard(theBoard)
+                    print("\nGame Over.\n")                
+                    print(" **** " +turn + " won. ****")
+                    break
+                elif theBoard['1'] == theBoard['5'] == theBoard['9'] != ' ': # diagonal
+                    printBoard(theBoard)
+                    print("\nGame Over.\n")                
+                    print(" **** " +turn + " won. ****")
+                    break 
+
+            # 'tie'.
+            if count == 9:
+                print("\nGame Over.\n")                
+                print("It's a Tie!!")
+
+            # Change the player after every move.
+            if turn =='X':
+                turn = 'O'
+            else:
+                turn = 'X'        
+
+    if s=="2":
+        game()
+else:
+    print("Wrong Choice")
